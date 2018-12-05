@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="Leave" name="Leave Process" isExecutable="true">
+    <startEvent id="StartEvent" name="启动"></startEvent>
+    <userTask id="DeptLeaveApprove" name="领导审批" activiti:assignee="leader"></userTask>
+    <sequenceFlow id="flow1" sourceRef="StartEvent" targetRef="DeptLeaveApprove"></sequenceFlow>
+    <userTask id="HRApprove" name="人事审批"></userTask>
+    <sequenceFlow id="flow2" sourceRef="DeptLeaveApprove" targetRef="HRApprove"></sequenceFlow>
+    <userTask id="ReturnToWork" name="销假"></userTask>
+    <sequenceFlow id="flow3" sourceRef="HRApprove" targetRef="ReturnToWork"></sequenceFlow>
+    <endEvent id="EndEvent1" name="End"></endEvent>
+    <sequenceFlow id="flow4" sourceRef="ReturnToWork" targetRef="EndEvent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Leave">
+    <bpmndi:BPMNPlane bpmnElement="Leave" id="BPMNPlane_Leave">
+      <bpmndi:BPMNShape bpmnElement="StartEvent" id="BPMNShape_StartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="120.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="DeptLeaveApprove" id="BPMNShape_DeptLeaveApprove">
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HRApprove" id="BPMNShape_HRApprove">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ReturnToWork" id="BPMNShape_ReturnToWork">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndEvent1" id="BPMNShape_EndEvent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="650.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="155.0" y="117.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="117.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="305.0" y="117.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="117.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="455.0" y="117.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="117.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="605.0" y="117.0"></omgdi:waypoint>
+        <omgdi:waypoint x="650.0" y="117.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
